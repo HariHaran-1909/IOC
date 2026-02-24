@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 
+const API_URL = "http://20.187.150.193:4000";
 function App() {
   const [projects, setProjects] = useState([]);
   const [title, setTitle] = useState("");
@@ -8,7 +9,7 @@ function App() {
 
   // Fetch all projects
   const loadProjects = async () => {
-    const res = await fetch("http://localhost:4000/projects");
+    const res = await fetch(`${API_URL}`);
     const data = await res.json();
     setProjects(data);
   };
@@ -17,7 +18,7 @@ function App() {
   const addProject = async (e) => {
     e.preventDefault();
 
-    await fetch("http://localhost:4000/projects", {
+    await fetch(`${API_URL}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title, description }),
@@ -30,7 +31,7 @@ function App() {
 
   // Update project status
   const updateStatus = async (id) => {
-    await fetch(`http://localhost:4000/projects/${id}`, {
+    await fetch(`${API_URL}${id}`, {
       method: "PUT",
     });
     loadProjects();
