@@ -9,7 +9,7 @@ function App() {
 
   // Fetch all projects
   const loadProjects = async () => {
-    const res = await fetch(`${API_URL}`);
+    const res = await fetch(API_URL);
     const data = await res.json();
     setProjects(data);
   };
@@ -18,7 +18,7 @@ function App() {
   const addProject = async (e) => {
     e.preventDefault();
 
-    await fetch(`${API_URL}`, {
+    await fetch(API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title, description }),
