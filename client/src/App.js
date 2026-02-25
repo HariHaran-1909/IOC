@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 
-const API_URL = "http://20.187.150.193:4000/projects";
+const API_URL = "/projects";
 function App() {
   const [projects, setProjects] = useState([]);
   const [title, setTitle] = useState("");

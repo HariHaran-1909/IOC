@@ -62,5 +62,12 @@ app.put("/projects/:id", (req, res) => {
   res.json({ message: "Status updated", project });
 });
 
+// Serve React build
+app.use(express.static(path.join(__dirname, "../client/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
+
 // Server start
 app.listen(4000, () => console.log("Server running on port 4000"));
